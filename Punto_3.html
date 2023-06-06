@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="./Css/estilos.css">
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="Formulario de Registro.html">Registro</a></li>
+        <li><a href="sobremi.html">Sobre mi</a></li>
+        <li><a href="Lab.html">Lab</a></li>
+      </ul>
+    </nav>
+    <h1>BUSCADOR DE VOCALES</h1>
+    <ul>
+      <li><a href="Punto_3.js">Leer el Script en java</a></li>
+        </ul>
+  <script>
+    function esVocal(caracter) {
+      var vocales = ['a', 'e', 'i', 'o', 'u'];
+      return vocales.includes(caracter.toLowerCase());
+    }
+
+    function contarVocales() {
+      var frase = document.getElementById('frase').value;
+      var vocalesEncontradas = [];
+
+      for (var i = 0; i < frase.length; i++) {
+        var caracter = frase[i];
+
+        if (esVocal(caracter)) {
+          vocalesEncontradas.push(caracter.toLowerCase());
+        }
+      }
+
+      var resultado = document.getElementById('resultado');
+      if (vocalesEncontradas.length > 0) {
+        resultado.textContent = 'Las vocales encontradas son: ' + vocalesEncontradas.join(', ');
+      } else {
+        resultado.textContent = 'No se encontraron vocales en la frase ingresada.';
+      }
+    }
+  </script>
+</head>
+<body>
+
+  <form>
+    <label for="frase">Ingresa una frase:</label>
+    <input type="text" id="frase" name="frase">
+    <button type="button" onclick="contarVocales()">Contar vocales</button>
+  </form>
+  <p id="resultado"></p>
+</body>
+</html>

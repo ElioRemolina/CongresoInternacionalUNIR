@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="./Css/estilos.css">
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="Formulario de Registro.html">Registro</a></li>
+      <li><a href="sobremi.html">Sobre mi</a></li>
+      <li><a href="Lab.html">Lab</a></li>
+    </ul>
+  </nav>
+  <title>Página de Ejemplo</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    function loadContent() {
+      var url = $("#urlInput").val();
+
+      $.ajax({
+        url: url,
+        method: "GET",
+        beforeSend: function() {
+          $("#status").text("Estado de la petición: Cargando");
+          $("#headers").empty();
+          $("#statusCode").empty();
+          $("#content").empty();
+        },
+        success: function(data, textStatus, jqXHR) {
+          $("#status").text("Estado de la petición: Completada");
+          $("#headers").html("Cabeceras HTTP de la respuesta del servidor:<br>" + jqXHR.getAllResponseHeaders());
+          $("#statusCode").text("Código de estado: " + jqXHR.status + " " + jqXHR.statusText);
+          $("#content").html("Contenidos del archivo:<br>" + data);
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+          $("#status").text("Error: " + textStatus);
+          $("#headers").empty();
+          $("#statusCode").empty();
+          $("#content").empty();
+        }
+      });
+    }
+  </script>
+</head>
+<body>
+  <input type="text" id="urlInput">
+  <button onclick="loadContent()">Mostrar Contenidos</button>
+  <div id="status">Estado de la petición: No iniciada</div>
+  <div id="headers">Cabeceras HTTP de la respuesta del servidor:</div>
+  <div id="statusCode">Código de estado: </div>
+  <div id="content">Contenidos del archivo:</div>
+</body>
+</html>

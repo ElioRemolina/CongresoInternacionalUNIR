@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="./Css/estilos.css">
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="Formulario de Registro.html">Registro</a></li>
+      <li><a href="sobremi.html">Sobre mi</a></li>
+      <li><a href="Lab.html">Lab</a></li>
+    </ul>
+  </nav>
+  <h1>CONTADOR DE VOCALES</h1>
+  <ul>
+    <li><a href="Punto_4.js">Leer el Script en java</a></li>
+      </ul>
+  <script>
+    function contarVocales(frase) {
+      // Convertir la frase a minúsculas para evitar problemas de coincidencia
+      frase = frase.toLowerCase();
+
+      // Inicializar contadores para cada vocal
+      let contadorA = 0;
+      let contadorE = 0;
+      let contadorI = 0;
+      let contadorO = 0;
+      let contadorU = 0;
+
+      // Recorrer cada carácter de la frase
+      for (let i = 0; i < frase.length; i++) {
+        const caracter = frase[i];
+        // Verificar si el carácter es una vocal y aumentar el contador correspondiente
+        switch (caracter) {
+          case 'a':
+            contadorA++;
+            break;
+          case 'e':
+            contadorE++;
+            break;
+          case 'i':
+            contadorI++;
+            break;
+          case 'o':
+            contadorO++;
+            break;
+          case 'u':
+            contadorU++;
+            break;
+          default:
+            // Si no es una vocal, continuar con el siguiente carácter
+            continue;
+        }
+      }
+
+      // Actualizar los elementos del HTML con los resultados
+      document.getElementById('contador-a').textContent = contadorA;
+      document.getElementById('contador-e').textContent = contadorE;
+      document.getElementById('contador-i').textContent = contadorI;
+      document.getElementById('contador-o').textContent = contadorO;
+      document.getElementById('contador-u').textContent = contadorU;
+    }
+  </script>
+</head>
+<body>
+  <label for="frase">Ingrese una frase:</label>
+  <input type="text" id="frase">
+  <button onclick="contarVocales(document.getElementById('frase').value)">Contar</button>
+
+  <h2>Cantidad de veces que aparece cada vocal:</h2>
+  <p>A: <span id="contador-a">0</span></p>
+  <p>E: <span id="contador-e">0</span></p>
+  <p>I: <span id="contador-i">0</span></p>
+  <p>O: <span id="contador-o">0</span></p>
+  <p>U: <span id="contador-u">0</span></p>
+</body>
+</html>

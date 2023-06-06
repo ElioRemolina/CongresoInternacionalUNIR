@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Verificador de Palindromos</title>
+  <link rel="stylesheet" href="./Css/estilos.css">
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="Formulario de Registro.html">Registro</a></li>
+      <li><a href="sobremi.html">Sobre mi</a></li>
+      <li><a href="Lab.html">Lab</a></li>
+    </ul>
+  </nav>
+
+  <h1>Verificador de Palindromos</h1>
+  <button id="punto_1">Introducir Palabra</button>
+  <ul>
+    <li><a href="Punto_1.js">Leer el Script en java</a></li>
+
+  <script>
+    function esPalindromo(palabra) {
+      // Eliminamos los caracteres no alfabéticos y convertimos a minúsculas
+      palabra = palabra.toLowerCase().replace(/[^a-z]+/g, '');
+
+      // Verificamos si la palabra invertida es igual a la palabra original
+      return palabra === palabra.split('').reverse().join('');
+    }
+
+    document.getElementById("punto_1").addEventListener("click", function() {
+      var palabra = prompt("Introduce una palabra:");
+      if (palabra !== null) {
+        if (esPalindromo(palabra)) {
+          alert("La palabra es un palindromo");
+        } else {
+          alert("La palabra no es un palindromo");
+        }
+      }
+    });
+
+
+  </script>
+</body>
+</html>
